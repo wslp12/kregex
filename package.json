@@ -1,6 +1,6 @@
 {
   "name": "reactbase",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "main": "dist-electron-main/main.js",
   "repository": "https://github.com/wslp12/kregex.git",
@@ -66,6 +66,7 @@
   },
   "build": {
     "appId": "reactbase",
+    "artifactName": "${productName}.${ext}",
     "asar": true,
     "win": {
       "icon": "./public/images/icon.icns",
