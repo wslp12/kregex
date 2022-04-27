@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
-import Hello from './components/Hello';
 import './index.css';
 
 const id = 'root';
@@ -11,13 +9,7 @@ if (rootElem) {
   const root = ReactDOM.createRoot(rootElem);
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="/main" element={<Hello />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <App />
     </React.StrictMode>,
   );
 } else {

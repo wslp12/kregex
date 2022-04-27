@@ -15,6 +15,7 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env.react_base': JSON.stringify({
       mode,
+      runtimeMode: process.env.runtimeMode,
     }),
   }),
   new HtmlWebpackPlugin({

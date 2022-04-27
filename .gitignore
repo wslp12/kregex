@@ -6,10 +6,14 @@
 # 테스팅 폴더
 /coverage
 
+# #빌드 결과물에서 exe 파일을 제외하고 ignore
+# !/dist-electron/reactbase.exe
 # 빌드 결과물
-/build
-/dist
-/dist-type
+/dist-web
+/dist-electron-main
+!dist-electron/
+dist-electron/*
+!dist-electron/reactbase.exe
 
 # 환경설정
 .DS_Store

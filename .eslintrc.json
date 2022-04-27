@@ -49,6 +49,7 @@
           "**/*.spec.tsx"
         ]
       }
-    ]
+    ],
+    "operator-linebreak": "off" // 프리티어 관할
   }
 }

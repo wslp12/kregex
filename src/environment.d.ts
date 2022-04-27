@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       react_base: {
         mode: 'development' | 'production';
+        runtimeMode: 'local' | 'production';
       };
     }
   }

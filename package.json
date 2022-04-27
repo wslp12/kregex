@@ -1,11 +1,13 @@
 {
   "name": "reactbase",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "private": true,
   "main": "dist-electron-main/main.js",
+  "repository": "https://github.com/wslp12/kregex.git",
   "dependencies": {
-    "electron": "^18.1.0",
-    "electron-builder": "^23.0.3",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.6.2",
     "electron-json-storage": "^4.5.0",
     "electron-log": "^4.4.6",
     "electron-updater": "^5.0.1",
@@ -13,17 +15,17 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
-    "@types/electron-json-storage": "^4.5.0",
-    "electron-builder": "^23.0.3",
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^13.1.1",
+    "@types/electron-json-storage": "^4.5.0",
     "@types/jest": "^27.4.1",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
@@ -33,6 +35,8 @@
     "@typescript-eslint/parser": "^5.20.0",
     "babel-jest": "^27.5.1",
     "css-loader": "^6.7.1",
+    "electron": "^18.1.0",
+    "electron-builder": "^23.0.3",
     "eslint": "^8.13.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -52,21 +56,31 @@
   },
   "scripts": {
     "build:local:main": "env-cmd -e main,local npx webpack --config webpack.config.js --watch",
+    "build:prod:main": "env-cmd -e main,prod npx webpack --config webpack.config.js",
     "start:local:web": "env-cmd -e renderer,local webpack serve",
+    "build:prod:web": "env-cmd -e renderer,prod npx webpack --config webpack.config.js",
     "se": "electron .",
+    "pack:elec:win:prod": "yarn build:prod:web && yarn build:prod:main && electron-builder --win",
     "test": "jest",
     "test:cover": "jest --coverage"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "build": {
+    "appId": "reactbase",
+    "asar": true,
+    "win": {
+      "icon": "./public/images/icon.icns",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "directories": {
+      "output": "dist-electron",
+      "app": "."
+    }
   }
 }
